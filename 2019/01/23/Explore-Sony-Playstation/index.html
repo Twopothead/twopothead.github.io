@@ -7,18 +7,22 @@
   
   <title>Explore Sony Playstation! | Curie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="I will implement an emulator of Sony PlayStation which is based on a MIPS r3000 CPU. That seems difficult, but sounds interesting, aah? References:  r3000-manual from https://cgi.cse.unsw.edu.au/~cs32">
+  <meta name="description" content="I will implement an emulator of Sony PlayStation which is based on a MIPS r3000 CPU. That seems difficult, but sounds interesting, aah? R3000 CPU registersr3000-manua P22 chp2 Conventional names and u">
 <meta name="keywords" content="MIPS,PlayStation,r3000,emulator">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Explore Sony Playstation!">
 <meta property="og:url" content="https://twopothead.github.io/2019/01/23/Explore-Sony-Playstation/index.html">
 <meta property="og:site_name" content="Curie">
-<meta property="og:description" content="I will implement an emulator of Sony PlayStation which is based on a MIPS r3000 CPU. That seems difficult, but sounds interesting, aah? References:  r3000-manual from https://cgi.cse.unsw.edu.au/~cs32">
+<meta property="og:description" content="I will implement an emulator of Sony PlayStation which is based on a MIPS r3000 CPU. That seems difficult, but sounds interesting, aah? R3000 CPU registersr3000-manua P22 chp2 Conventional names and u">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-23T14:26:47.766Z">
+<meta property="og:image" content="https://twopothead.github.io/2019/01/23/Explore-Sony-Playstation/r3000-cpu-registers.png">
+<meta property="og:image" content="https://twopothead.github.io/2019/01/23/Explore-Sony-Playstation/memorymap-of-ps1.png">
+<meta property="og:image" content="https://twopothead.github.io/2019/01/23/Explore-Sony-Playstation/psx-memory-map.png">
+<meta property="og:updated_time" content="2019-01-26T14:02:48.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Explore Sony Playstation!">
-<meta name="twitter:description" content="I will implement an emulator of Sony PlayStation which is based on a MIPS r3000 CPU. That seems difficult, but sounds interesting, aah? References:  r3000-manual from https://cgi.cse.unsw.edu.au/~cs32">
+<meta name="twitter:description" content="I will implement an emulator of Sony PlayStation which is based on a MIPS r3000 CPU. That seems difficult, but sounds interesting, aah? R3000 CPU registersr3000-manua P22 chp2 Conventional names and u">
+<meta name="twitter:image" content="https://twopothead.github.io/2019/01/23/Explore-Sony-Playstation/r3000-cpu-registers.png">
   
     <link rel="alternate" href="/atom.xml" title="Curie" type="application/atom+xml">
   
@@ -88,15 +92,113 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>I will implement an emulator of Sony PlayStation which is based on a MIPS r3000 CPU. That seems difficult, but sounds interesting, aah?</p>
-<p>References:</p>
+<h2 id="R3000-CPU-registers"><a href="#R3000-CPU-registers" class="headerlink" title="R3000 CPU registers"></a>R3000 CPU registers</h2><p>r3000-manua P22 chp2 Conventional names and uses of general-purpose registers</p>
+<p><img src="/2019/01/23/Explore-Sony-Playstation/r3000-cpu-registers.png" alt=""></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> mips_register&#123;</span><br><span class="line">    R2000_REGISTER_ZERO,</span><br><span class="line">    R2000_REGISTER_AT,</span><br><span class="line">    R2000_REGISTER_V0,R2000_REGISTER_V1,</span><br><span class="line">    R2000_REGISTER_A0,R2000_REGISTER_A1,R2000_REGISTER_A2,R2000_REGISTER_A3,</span><br><span class="line">  R2000_REGISTER_T0,R2000_REGISTER_T1,R2000_REGISTER_T2,R2000_REGISTER_T3,R2000_REGISTER_T4,</span><br><span class="line">        R2000_REGISTER_T5,R2000_REGISTER_T6,R2000_REGISTER_T7,</span><br><span class="line">        R2000_REGISTER_T8,R2000_REGISTER_T9,</span><br><span class="line">  R2000_REGISTER_S0,R2000_REGISTER_S1,R2000_REGISTER_T2,R2000_REGISTER_S3,R2000_REGISTER_S4,</span><br><span class="line">        R2000_REGISTER_S5,R2000_REGISTER_S6,R2000_REGISTER_S7,  </span><br><span class="line">    R2000_REGISTER_K0,R2000_REGISTER_K1,</span><br><span class="line">    R2000_REGISTER_GP,</span><br><span class="line">    R2000_REGISTER_SP,</span><br><span class="line">    R2000_REGISTER_S8_FP,</span><br><span class="line">    R2000_REGISTER_RA</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://superuser.com/questions/1249314/linux-kernel-without-mmu-for-mips-r3000?rq=1" target="_blank" rel="noopener">https://superuser.com/questions/1249314/linux-kernel-without-mmu-for-mips-r3000?rq=1</a></p>
+<p><a href="https://lists.gnu.org/archive/html/qemu-devel/2014-01/msg00923.html" target="_blank" rel="noopener">https://lists.gnu.org/archive/html/qemu-devel/2014-01/msg00923.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">BUILD INSTRUCTION</span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">1. build barebox for R3000</span><br><span class="line"></span><br><span class="line">TIP: you can skip this step: just use precompiled barebox image</span><br><span class="line">https://github.com/frantony/qemu/raw/master.mips-precise-r3000.20140108/zbarebox-malta-r3000.bin</span><br><span class="line"></span><br><span class="line">  $ git clone https://github.com/frantony/barebox -b </span><br><span class="line">next.qemu-malta-r3000.20140108</span><br><span class="line">  $ cd barebox/</span><br><span class="line">  $ export ARCH=mips</span><br><span class="line">  $ export CROSS_COMPILE=&lt;your MIPS cross-compiler prefix&gt;</span><br><span class="line">  $ make qemu-malta_defconfig</span><br><span class="line">  $ make</span><br><span class="line">  $ cd ..</span><br><span class="line"></span><br><span class="line">2. build qemu</span><br><span class="line"></span><br><span class="line">  $ git clone https://github.com/frantony/qemu -b </span><br><span class="line">master.mips-precise-r3000.20140108</span><br><span class="line">  $ cd qemu</span><br><span class="line">  $ ./configure --target-list=mips-softmmu</span><br><span class="line">  $ make</span><br><span class="line"></span><br><span class="line">3. run qemu</span><br><span class="line"></span><br><span class="line">  $ ./mips-softmmu/qemu-system-mips \</span><br><span class="line">           -nodefaults \</span><br><span class="line">           -nographic \</span><br><span class="line">           -bios ../barebox/arch/mips/pbl/zbarebox.bin \</span><br><span class="line">           -serial stdio \</span><br><span class="line">           -monitor none</span><br><span class="line"></span><br><span class="line">FUTURE WORK</span><br><span class="line">-----------</span><br></pre></td></tr></table></figure>
+<p>Debian <a href="https://www.spinics.net/lists/mips/msg70031.html" target="_blank" rel="noopener">dropped</a> older MIPS architecture quite a long time ago. But that’s not the worst problem.</p>
+<p>Thing is, QEMU itself <a href="https://www.linux-mips.org/wiki/Qemu#Processor" target="_blank" rel="noopener">isn’t</a> supporting anything (and never did AFAIK) that ancient either. I was almost going to tell you to just hope finding some more accessible <a href="http://linuxdocs.org/HOWTOs/MIPS-HOWTO-3.html" target="_blank" rel="noopener">comparable hardware</a>, but then I found about <a href="https://en.wikipedia.org/wiki/SPIM" target="_blank" rel="noopener">SPIM</a> and <a href="https://astr0baby.wordpress.com/2017/07/07/computer-archeology-ultrix/" target="_blank" rel="noopener">GXemul</a>.</p>
+<p>Guess like they all are going to offer you both a FPU and a MMU.. But better than nothing then? Some very ‘funny’ toy to work with the latter aspect could be a <a href="https://www.linux-mips.org/wiki/PSP" target="_blank" rel="noopener">PSP</a> btw.</p>
+<p>Also recommended <a href="https://www.kernel.org/doc/Documentation/nommu-mmap.txt" target="_blank" rel="noopener">this doc</a>, and the rest of <a href="https://www.linux-mips.org/archives/linux-mips/2017-10/msg00372.html" target="_blank" rel="noopener">this discussion</a> if you are interested to the remainder of the PS1 components and/or mainlining.</p>
+<p>EDIT: very basic support was once <a href="https://lists.gnu.org/archive/html/qemu-devel/2014-01/msg00923.html" target="_blank" rel="noopener">proposed</a> to QEMU.</p>
+<h3 id="wxWidgets"><a href="#wxWidgets" class="headerlink" title="wxWidgets"></a>wxWidgets</h3><ul>
+<li><p>download <a href="https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.2/wxWidgets-3.1.2.tar.bz2" target="_blank" rel="noopener">https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.2/wxWidgets-3.1.2.tar.bz2</a></p>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cmake .</span><br><span class="line">./wx-config</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="HLE"><a href="#HLE" class="headerlink" title="HLE"></a>HLE</h3><p><a href="https://www.reddit.com/r/programming/comments/41bo7h/ive_started_livecoding_an_n64_emulator_in_rust/" target="_blank" rel="noopener">https://www.reddit.com/r/programming/comments/41bo7h/ive_started_livecoding_an_n64_emulator_in_rust/</a></p>
+<p>HLE is a very strange thing indeed.</p>
+<p>Imagine you wanted to emulate a PC running Linux, and for some reason you can’t get a syscall to run correctly in the emulator. You could make it so the emulator detects that syscall, and when that syscall is called, then instead of jumping to the kernel and letting the kernel handle it, <em>the emulator handles it directly</em>. That’s HLE.</p>
+<p>(HLE isn’t the only hack used in N64 emulators)</p>
+<p>The non-hacky solution is to properly emulate the code behind the syscall. The non-hacky solution for performance is to recompile it.</p>
+<h3 id="Avocado"><a href="#Avocado" class="headerlink" title="Avocado"></a>Avocado</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/JaCzekanski/Avocado.git</span><br><span class="line"><span class="built_in">cd</span> Avocado</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line"><span class="comment"># https://github.com/premake/premake-core/releases/download/v5.0.0-alpha13/premake-5.0.0-alpha13-linux.tar.gz</span></span><br><span class="line"><span class="comment"># extract here </span></span><br><span class="line">sudo apt install libsdl2-dev</span><br><span class="line">./premake5 gmake</span><br><span class="line"><span class="comment"># fatal error: bits/c++config.h: No such file or directory</span></span><br><span class="line"><span class="comment"># https://stackoverflow.com/questions/4643197/missing-include-bits-cconfig-h-when-cross-compiling-64-bit-program-on-32-bit</span></span><br><span class="line">sudo apt-get install gcc-multilib g++-multilib</span><br><span class="line">make <span class="built_in">help</span></span><br><span class="line">make config=debug_x64 avocado</span><br><span class="line">./build/debug_x64/avocado</span><br><span class="line"><span class="comment"># OK,success!</span></span><br><span class="line"><span class="comment"># http://czekanski.info/</span></span><br><span class="line"><span class="comment"># http://psxdev.net/downloads/unirom.zip</span></span><br><span class="line"><span class="comment"># game: Danger girl</span></span><br><span class="line"><span class="comment"># https://romsmania.cc/roms/playstation/danger-girl-slus-00881-243660</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://www.vanade.com/~blc/DS3100/" target="_blank" rel="noopener">http://www.vanade.com/~blc/DS3100/</a></p>
+<p>The MIPS R2000 is a scalar, RISC (uniform instruction length) 5-stage pipelined processor with static taken branch prediction (and that cursed delayed branch that all MIPS programmers know all too well). It has separate direct mapped, 16K entry/16 bit tag, 64KB D- and I-caches which run at full speed. They’re write through caches but use the R2020 to buffer writes so the processor doesn’t need to stall as often without having to implement write-back. The 16MHz PMAX can sustain about 11 MIPS, which is faster than a 386DX/40 and is about the same speed as a 486DX/33 which also has static branch prediction. (At least the <em>Dhrystone</em> benchmark reports the DS3100 as being 50% faster than my 386DX/40 and my 486DX/33 was about 50-60% faster than the 386/40.</p>
+<p>mips r3000 kernel</p>
+<p>umps </p>
 <ul>
+<li><a href="http://www.cs.unibo.it/~sacerdot/so/lucidi/" target="_blank" rel="noopener">http://www.cs.unibo.it/~sacerdot/so/lucidi/</a></li>
+<li><a href="https://github.com/tjonjic/umps" target="_blank" rel="noopener">https://github.com/tjonjic/umps</a></li>
+</ul>
+<h2 id="MIPS-CPU-Emulators"><a href="#MIPS-CPU-Emulators" class="headerlink" title="MIPS CPU Emulators"></a><a href="http://www.sensi.org/~alec/mips/index.html" target="_blank" rel="noopener">MIPS CPU Emulators</a></h2><ul>
+<li><a href="http://www.gavare.se/mips64emul/" target="_blank" rel="noopener">mips64emul</a>: works under with <a href="http://www.cygwin.com/" target="_blank" rel="noopener">CygWin</a></li>
+<li><a href="http://www.cs.wisc.edu/~larus/spim.html" target="_blank" rel="noopener">SPIM</a> a MIPS32 Emulator. Educational tool.</li>
+<li><a href="http://www.dgate.org/vmips/" target="_blank" rel="noopener">VMIPS</a> - MIPS R3000 Emulator.</li>
+<li><a href="http://www.cs.unibo.it/mps/" target="_blank" rel="noopener">MPS</a> - another R3000 emulator</li>
+<li><a href="http://www.niksula.hut.fi/~buenos/yams.html" target="_blank" rel="noopener">YAMS</a> - Yet another MIPS32 Simulator</li>
+<li><a href="http://www.abo.fi/~jkniivil/misse/" target="_blank" rel="noopener">MISSE</a> - MIPS Instruction Set Simulator Environment</li>
+</ul>
+<p><a href="https://github.com/bogger33/emus" target="_blank" rel="noopener">https://github.com/bogger33/emus</a></p>
+<p><em>SCPH1001</em></p>
+<h3 id="Some-WIP-Sony-Playstation-emulator-projects"><a href="#Some-WIP-Sony-Playstation-emulator-projects" class="headerlink" title="Some WIP Sony Playstation emulator projects"></a>Some WIP Sony Playstation emulator projects</h3><p><a href="https://github.com/Schnert0/psXYZ" target="_blank" rel="noopener">https://github.com/Schnert0/psXYZ</a></p>
+<p><a href="https://github.com/aomega08/psemu" target="_blank" rel="noopener">https://github.com/aomega08/psemu</a></p>
+<p><a href="https://aomega08.github.io/" target="_blank" rel="noopener">https://aomega08.github.io/</a></p>
+<p><a href="https://github.com/hxzwd/ps-emul-2" target="_blank" rel="noopener">https://github.com/hxzwd/ps-emul-2</a></p>
+<p><a href="https://github.com/hxzwd/ps-emul" target="_blank" rel="noopener">https://github.com/hxzwd/ps-emul</a></p>
+<p><a href="https://github.com/faouellet/PSEmu" target="_blank" rel="noopener">https://github.com/faouellet/PSEmu</a></p>
+<p><a href="https://github.com/Quaker762/NeoPS" target="_blank" rel="noopener">https://github.com/Quaker762/NeoPS</a> (doc)</p>
+<p><a href="https://github.com/hxzwd/mips_disassembler" target="_blank" rel="noopener">https://github.com/hxzwd/mips_disassembler</a></p>
+<h3 id="Related-Blogs"><a href="#Related-Blogs" class="headerlink" title="Related Blogs"></a>Related Blogs</h3><p><a href="https://aldelaro5.wordpress.com/2018/07/20/the-pain-of-researching-games-with-an-nintendo-64-emulator/" target="_blank" rel="noopener">https://aldelaro5.wordpress.com/2018/07/20/the-pain-of-researching-games-with-an-nintendo-64-emulator/</a></p>
+<h3 id="Nintendo-64"><a href="#Nintendo-64" class="headerlink" title="Nintendo_64"></a>Nintendo_64</h3><p>N64 is <strong>too hard</strong>!</p>
+<p><strong>Reality Coprocessor</strong> (RCP) is one of the <a href="https://en.wikipedia.org/wiki/Nintendo_64" target="_blank" rel="noopener">Nintendo 64</a>‘s two main chips, alongside the <a href="https://en.wikipedia.org/wiki/NEC" target="_blank" rel="noopener">NEC</a> <a href="https://en.wikipedia.org/wiki/VR4300" target="_blank" rel="noopener">VR4300</a>, a derivative of the <a href="https://en.wikipedia.org/wiki/MIPS_Technologies" target="_blank" rel="noopener">MIPS</a> <a href="https://en.wikipedia.org/wiki/R4200" target="_blank" rel="noopener">R4200</a>. The RCP was developed by <a href="https://en.wikipedia.org/wiki/Silicon_Graphics" target="_blank" rel="noopener">Silicon Graphics</a> for Nintendo, specifically for the Nintendo 64 video game console.</p>
+<p>The RCP consists of two main components: the Reality Signal Processor (RSP) and the Reality Display Processor (RDP).</p>
+<p>Nintendo 64’s graphics and audio duties are performed by the 64-bit <a href="https://en.wikipedia.org/wiki/Silicon_Graphics" target="_blank" rel="noopener">SGI</a> coprocessor, named the Reality Coprocessor, or RCP. The RCP is a 62.5 MHz chip split internally into two major components, the Reality Display Processor (RDP) and the Reality Signal Processor (RSP). </p>
+<p>The RSP is a MIPS R4000-based 128-bit integer vector processor. </p>
+<p><a href="https://en.wikipedia.org/wiki/Reality_Coprocessor" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Reality_Coprocessor</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Nintendo_video_game_consoles" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Nintendo_video_game_consoles</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Nintendo_64_technical_specifications" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Nintendo_64_technical_specifications</a></p>
+<h3 id="gxemul"><a href="#gxemul" class="headerlink" title="gxemul"></a>gxemul</h3><p><a href="https://ftp.netbsd.org/pub/NetBSD-archive/iso/5.0/pmaxcd-5.0.iso" target="_blank" rel="noopener">https://ftp.netbsd.org/pub/NetBSD-archive/iso/5.0/pmaxcd-5.0.iso</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://en.wikipedia.org/wiki/GXemul</span></span><br><span class="line"><span class="comment"># https://ftp.netbsd.org/pub/NetBSD-archive/iso/5.0/pmaxcd-5.0.iso</span></span><br><span class="line">gxemul -e 3max  -d b:pmaxcd-5.0.iso</span><br></pre></td></tr></table></figure>
+<h3 id="Memory-Map-of-PS1"><a href="#Memory-Map-of-PS1" class="headerlink" title="Memory Map of PS1"></a>Memory Map of PS1</h3><p><a href="http://problemkaputt.de/psx-spx.htm#cpuspecifications" target="_blank" rel="noopener">http://problemkaputt.de/psx-spx.htm#cpuspecifications</a></p>
+<p><img src="/2019/01/23/Explore-Sony-Playstation/memorymap-of-ps1.png" alt=""></p>
+<h3 id="PSX-memory-map"><a href="#PSX-memory-map" class="headerlink" title="PSX memory map"></a>PSX memory map</h3><p>The PSX Memory Map P16 Everything You Have Always Wanted to Know about the Playstation But Were Afraid to Ask.</p>
+<p><img src="/2019/01/23/Explore-Sony-Playstation/psx-memory-map.png" alt=""></p>
+<h3 id="Details-of-PS-games"><a href="#Details-of-PS-games" class="headerlink" title="Details of PS games"></a>Details of PS games</h3><p><em>The PlayStation 1 is a 5th generation video game console released by Sony in 1994.</em></p>
+<p><a href="https://github.com/acounihan/RetroPie-Setup/wiki/Playstation-1" target="_blank" rel="noopener">https://github.com/acounihan/RetroPie-Setup/wiki/Playstation-1</a></p>
+<h3 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h3><p><a href="https://en.wikipedia.org/wiki/CFLAGS" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/CFLAGS</a></p>
+<p><strong>CFLAGS</strong> and <strong>CXXFLAGS</strong> are either the name of <a href="https://en.wikipedia.org/wiki/Environment_variable" target="_blank" rel="noopener">environment variables</a> or of <a href="https://en.wikipedia.org/wiki/Makefile" target="_blank" rel="noopener">Makefile</a> variables that can be set to specify additional <a href="https://en.wikipedia.org/wiki/Switch_(command_line" target="_blank" rel="noopener">switches</a>) to be passed to a <a href="https://en.wikipedia.org/wiki/Compiler" target="_blank" rel="noopener">compiler</a> in the process of building <a href="https://en.wikipedia.org/wiki/Computer_software" target="_blank" rel="noopener">computer software</a>.</p>
+<h3 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h3><h4 id="fread"><a href="#fread" class="headerlink" title="fread()"></a>fread()</h4><ul>
+<li>Following is the declaration for <a href="https://www.tutorialspoint.com/c_standard_library/c_function_fread.htm" target="_blank" rel="noopener">fread() </a>.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">size_t</span> fread(<span class="keyword">void</span> *ptr, <span class="keyword">size_t</span> size, <span class="keyword">size_t</span> nmemb, FILE *stream)</span><br><span class="line"><span class="keyword">size_t</span> fread(<span class="keyword">void</span> *__restrict__ __ptr, <span class="keyword">size_t</span> __size, <span class="keyword">size_t</span> __n, FILE *__restrict__ __stream)</span><br><span class="line"><span class="keyword">size_t</span> fread ( <span class="keyword">void</span> * ptr, <span class="keyword">size_t</span> size, <span class="keyword">size_t</span> count, FILE * stream );</span><br><span class="line">其中，ptr：指向保存结果的指针；size：每个数据类型的大小；count：数据的个数；stream：文件指针</span><br></pre></td></tr></table></figure>
+<ul>
+<li>return value</li>
+</ul>
+<p>The total number of elements successfully read are returned as a size_t object, which is an integral data type. If this number differs from the nmemb parameter, then either an error had occurred or the End Of File was reached.</p>
+<p>hexedit</p>
+<ul>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install hexedit</span><br><span class="line">sudo apt install wxhexeditor</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Problems-solved"><a href="#Problems-solved" class="headerlink" title="Problems solved"></a>Problems solved</h3><ul>
+<li><p>‘memset’ was not declared</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line">Can you see <span class="keyword">if</span> adding</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">or</span> <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt; in stress.cpp fixes this?</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h3><ul>
 <li>r3000-manual from <a href="https://cgi.cse.unsw.edu.au/~cs3231/doc/R3000.pdf" target="_blank" rel="noopener">https://cgi.cse.unsw.edu.au/~cs3231/doc/R3000.pdf</a> IDT R30xx Family Software Reference Manual</li>
+<li><a href="https://lists.gnu.org/archive/html/qemu-devel/2014-01/msg00923.html" target="_blank" rel="noopener">https://lists.gnu.org/archive/html/qemu-devel/2014-01/msg00923.html</a></li>
+<li><a href="https://www.linux-mips.org/wiki/PSP" target="_blank" rel="noopener">https://www.linux-mips.org/wiki/PSP</a></li>
+<li><a href="http://www.dsi.unive.it/~arcb/LAB/spim.htm" target="_blank" rel="noopener">http://www.dsi.unive.it/~arcb/LAB/spim.htm</a></li>
+<li><a href="https://www4.bing.com/" target="_blank" rel="noopener">https://www4.bing.com/</a></li>
+<li><a href="https://github.com/rasky/r64emu" target="_blank" rel="noopener">https://github.com/rasky/r64emu</a></li>
+<li><a href="https://github.com/baosen/play64" target="_blank" rel="noopener">https://github.com/baosen/play64</a></li>
+<li><a href="http://www.diegm.uniud.it/loghi/CE/slides/risc-example-2.pdf" target="_blank" rel="noopener">http://www.diegm.uniud.it/loghi/CE/slides/risc-example-2.pdf</a></li>
+<li><a href="http://www.cs.unibo.it/~sacerdot/so/lucidi/lso-02-umps-intro-01-4p.pdf" target="_blank" rel="noopener">http://www.cs.unibo.it/~sacerdot/so/lucidi/lso-02-umps-intro-01-4p.pdf</a></li>
+<li><a href="https://github.com/tjonjic/umps" target="_blank" rel="noopener">https://github.com/tjonjic/umps</a></li>
+<li><a href="http://www.sensi.org/~alec/mips/index.html" target="_blank" rel="noopener">http://www.sensi.org/~alec/mips/index.html</a></li>
+<li><a href="http://act.buaa.edu.cn/hsun/os2017/os.html" target="_blank" rel="noopener">http://act.buaa.edu.cn/hsun/os2017/os.html</a></li>
+<li><a href="http://czekanski.info/" target="_blank" rel="noopener">http://czekanski.info/</a></li>
+<li><a href="http://wiki.nesdev.com/w/index.php/Nesdev_Wiki" target="_blank" rel="noopener">http://wiki.nesdev.com/w/index.php/Nesdev_Wiki</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://twopothead.github.io/2019/01/23/Explore-Sony-Playstation/" data-id="cjr9a8hyq0000eod2yhxph9rc" class="article-share-link">Share</a>
+      <a data-url="https://twopothead.github.io/2019/01/23/Explore-Sony-Playstation/" data-id="cjrdngf490000mxd20l4v4xx0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MIPS/">MIPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PlayStation/">PlayStation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emulator/">emulator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/r3000/">r3000</a></li></ul>
@@ -106,6 +208,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/01/26/implement-a-PS1-emulator-01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          implement a PS1 emulator 01
+        
+      </div>
+    </a>
   
   
     <a href="/2019/01/22/try-ECNU-OJ/" id="article-nav-older" class="article-nav-link-wrap">
@@ -161,6 +272,10 @@
       <ul>
         
           <li>
+            <a href="/2019/01/26/implement-a-PS1-emulator-01/">implement a PS1 emulator 01</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/23/Explore-Sony-Playstation/">Explore Sony Playstation!</a>
           </li>
         
@@ -174,10 +289,6 @@
         
           <li>
             <a href="/2019/01/21/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/21/blog-backup/">blog-backup</a>
           </li>
         
       </ul>
