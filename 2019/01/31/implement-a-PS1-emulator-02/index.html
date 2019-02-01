@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>implement-a-PS1-emulator-02 | Curie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="PSXLinux1pcsxr -nogui PSXLINUX.EXE  I got the image “PSXLINUX.EXE“ from http://www.psxdev.net/forum/download/file.php?id=1011 -nogui option is necessary, because the screen will be black. 1pcsxr -nogu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="implement-a-PS1-emulator-02">
+<meta property="og:url" content="https://twopothead.github.io/2019/01/31/implement-a-PS1-emulator-02/index.html">
+<meta property="og:site_name" content="Curie">
+<meta property="og:description" content="PSXLinux1pcsxr -nogui PSXLINUX.EXE  I got the image “PSXLINUX.EXE“ from http://www.psxdev.net/forum/download/file.php?id=1011 -nogui option is necessary, because the screen will be black. 1pcsxr -nogu">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://twopothead.github.io/2019/01/31/implement-a-PS1-emulator-02/PSXLinux.png">
+<meta property="og:image" content="https://twopothead.github.io/2019/01/31/implement-a-PS1-emulator-02/fpu.png">
+<meta property="og:updated_time" content="2019-02-01T05:21:20.646Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="implement-a-PS1-emulator-02">
+<meta name="twitter:description" content="PSXLinux1pcsxr -nogui PSXLINUX.EXE  I got the image “PSXLINUX.EXE“ from http://www.psxdev.net/forum/download/file.php?id=1011 -nogui option is necessary, because the screen will be black. 1pcsxr -nogu">
+<meta name="twitter:image" content="https://twopothead.github.io/2019/01/31/implement-a-PS1-emulator-02/PSXLinux.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Curie" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Curie</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://twopothead.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-implement-a-PS1-emulator-02" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/31/implement-a-PS1-emulator-02/" class="article-date">
+  <time datetime="2019-01-31T12:55:54.000Z" itemprop="datePublished">2019-01-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      implement-a-PS1-emulator-02
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="PSXLinux"><a href="#PSXLinux" class="headerlink" title="PSXLinux"></a>PSXLinux</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcsxr -nogui PSXLINUX.EXE</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/31/implement-a-PS1-emulator-02/PSXLinux.png" alt=""></p>
+<p>I got the image “<a href="http://www.psxdev.net/forum/download/file.php?id=1011" target="_blank" rel="noopener">PSXLINUX.EXE</a>“ from <a href="http://www.psxdev.net/forum/download/file.php?id=1011" target="_blank" rel="noopener">http://www.psxdev.net/forum/download/file.php?id=1011</a></p>
+<p>-nogui option is necessary, because the screen will be black.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcsxr -nogui -cdfile PSXOS.iso</span><br></pre></td></tr></table></figure>
+<p>pcsxr configuration /dev/cdrom</p>
+<p>armips</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/Kingcom/armips.git</span><br><span class="line"><span class="built_in">cd</span> armips </span><br><span class="line">cmake .</span><br><span class="line">make</span><br><span class="line"><span class="comment"># then we get executable file :armips</span></span><br><span class="line"><span class="comment"># demo for sony PS1:https://github.com/PeterLemon/PSX/tree/master/HelloWorld</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://www.linux.org/threads/playstation-1-and-2-on-linux.4484/" target="_blank" rel="noopener">https://www.linux.org/threads/playstation-1-and-2-on-linux.4484/</a></p>
+<h3 id="ps1-exe"><a href="#ps1-exe" class="headerlink" title="ps1-exe"></a>ps1-exe</h3><p><a href="https://www.retroreversing.com/ps1-exe" target="_blank" rel="noopener">https://www.retroreversing.com/ps1-exe</a></p>
+<p><a href="https://github.com/RetroReversing/retroReversing/blob/master/pages/ps1/PS1FileFormats.md" target="_blank" rel="noopener">https://github.com/RetroReversing/retroReversing/blob/master/pages/ps1/PS1FileFormats.md</a></p>
+<p><a href="https://www.retroreversing.com/" target="_blank" rel="noopener">https://www.retroreversing.com/</a></p>
+<p>The PSX-EXE executable file format is a format similar to the standard UNIX ELF format. It is used on the Sony Playstation 1 and it is a MIPS 32-bit executable. It contains both code and data.</p>
+<p>In order to use tools like the RetDec decompiler we need to convert the exe format into elf, and in order to run on the playstation we need to convert compiled elf files into exe files.</p>
+<h2 id="PSYQ-SDK-Setup-on-MacOSX-Linux"><a href="#PSYQ-SDK-Setup-on-MacOSX-Linux" class="headerlink" title="PSYQ SDK Setup on MacOSX/Linux"></a><a href="https://www.retroreversing.com/psyq-sdk-setup" target="_blank" rel="noopener">PSYQ SDK Setup on MacOSX/Linux</a></h2><p><a href="https://www.retroreversing.com/psyq-sdk-setup" target="_blank" rel="noopener">https://www.retroreversing.com/psyq-sdk-setup</a></p>
+<h1 id="IEEE-754-Double-Precision-Floating-Point-Visualization"><a href="#IEEE-754-Double-Precision-Floating-Point-Visualization" class="headerlink" title="IEEE 754 Double Precision Floating Point Visualization"></a>IEEE 754 Double Precision Floating Point Visualization</h1><p><a href="https://github.com/bartaz/ieee754-visualization" target="_blank" rel="noopener">https://github.com/bartaz/ieee754-visualization</a></p>
+<p><img src="/2019/01/31/implement-a-PS1-emulator-02/fpu.png" alt=""></p>
+<p><a href="https://bartaz.github.io/ieee754-visualization/" target="_blank" rel="noopener">https://bartaz.github.io/ieee754-visualization/</a></p>
+<h3 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h3><ul>
+<li>CS 3339 MIPS  at Texas State University<ul>
+<li><a href="https://github.com/raulbehl/projects/tree/master/cpu_mips_cpp/project5" target="_blank" rel="noopener">https://github.com/raulbehl/projects/tree/master/cpu_mips_cpp/project5</a></li>
+<li><a href="https://github.com/aggroskater/cs3339-computer-architecture" target="_blank" rel="noopener">https://github.com/aggroskater/cs3339-computer-architecture</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://twopothead.github.io/2019/01/31/implement-a-PS1-emulator-02/" data-id="cjrllq5i500092nd2tv791hqn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/30/Make-an-emulator/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Make an emulator</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECNU-OJ/">ECNU-OJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MIPS/">MIPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PlayStation/">PlayStation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/emulator/">emulator</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/r3000/">r3000</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vjudge/">vjudge</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ECNU-OJ/" style="font-size: 10px;">ECNU-OJ</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/MIPS/" style="font-size: 20px;">MIPS</a> <a href="/tags/PlayStation/" style="font-size: 20px;">PlayStation</a> <a href="/tags/emulator/" style="font-size: 20px;">emulator</a> <a href="/tags/r3000/" style="font-size: 20px;">r3000</a> <a href="/tags/vjudge/" style="font-size: 10px;">vjudge</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/31/implement-a-PS1-emulator-02/">implement-a-PS1-emulator-02</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/30/Make-an-emulator/">Make an emulator</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/30/learn-opengl-01/">learn opengl 01</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/29/CMU-MIPS/">CMU MIPS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/27/OJ-Input-and-Output/">OJ: Input and Output</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Frank Curie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

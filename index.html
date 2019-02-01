@@ -62,6 +62,243 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-implement-a-PS1-emulator-02" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/31/implement-a-PS1-emulator-02/" class="article-date">
+  <time datetime="2019-01-31T12:55:54.000Z" itemprop="datePublished">2019-01-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/31/implement-a-PS1-emulator-02/">implement-a-PS1-emulator-02</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="PSXLinux"><a href="#PSXLinux" class="headerlink" title="PSXLinux"></a>PSXLinux</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcsxr -nogui PSXLINUX.EXE</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/01/31/implement-a-PS1-emulator-02/PSXLinux.png" alt=""></p>
+<p>I got the image “<a href="http://www.psxdev.net/forum/download/file.php?id=1011" target="_blank" rel="noopener">PSXLINUX.EXE</a>“ from <a href="http://www.psxdev.net/forum/download/file.php?id=1011" target="_blank" rel="noopener">http://www.psxdev.net/forum/download/file.php?id=1011</a></p>
+<p>-nogui option is necessary, because the screen will be black.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pcsxr -nogui -cdfile PSXOS.iso</span><br></pre></td></tr></table></figure>
+<p>pcsxr configuration /dev/cdrom</p>
+<p>armips</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/Kingcom/armips.git</span><br><span class="line"><span class="built_in">cd</span> armips </span><br><span class="line">cmake .</span><br><span class="line">make</span><br><span class="line"><span class="comment"># then we get executable file :armips</span></span><br><span class="line"><span class="comment"># demo for sony PS1:https://github.com/PeterLemon/PSX/tree/master/HelloWorld</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://www.linux.org/threads/playstation-1-and-2-on-linux.4484/" target="_blank" rel="noopener">https://www.linux.org/threads/playstation-1-and-2-on-linux.4484/</a></p>
+<h3 id="ps1-exe"><a href="#ps1-exe" class="headerlink" title="ps1-exe"></a>ps1-exe</h3><p><a href="https://www.retroreversing.com/ps1-exe" target="_blank" rel="noopener">https://www.retroreversing.com/ps1-exe</a></p>
+<p><a href="https://github.com/RetroReversing/retroReversing/blob/master/pages/ps1/PS1FileFormats.md" target="_blank" rel="noopener">https://github.com/RetroReversing/retroReversing/blob/master/pages/ps1/PS1FileFormats.md</a></p>
+<p><a href="https://www.retroreversing.com/" target="_blank" rel="noopener">https://www.retroreversing.com/</a></p>
+<p>The PSX-EXE executable file format is a format similar to the standard UNIX ELF format. It is used on the Sony Playstation 1 and it is a MIPS 32-bit executable. It contains both code and data.</p>
+<p>In order to use tools like the RetDec decompiler we need to convert the exe format into elf, and in order to run on the playstation we need to convert compiled elf files into exe files.</p>
+<h2 id="PSYQ-SDK-Setup-on-MacOSX-Linux"><a href="#PSYQ-SDK-Setup-on-MacOSX-Linux" class="headerlink" title="PSYQ SDK Setup on MacOSX/Linux"></a><a href="https://www.retroreversing.com/psyq-sdk-setup" target="_blank" rel="noopener">PSYQ SDK Setup on MacOSX/Linux</a></h2><p><a href="https://www.retroreversing.com/psyq-sdk-setup" target="_blank" rel="noopener">https://www.retroreversing.com/psyq-sdk-setup</a></p>
+<h1 id="IEEE-754-Double-Precision-Floating-Point-Visualization"><a href="#IEEE-754-Double-Precision-Floating-Point-Visualization" class="headerlink" title="IEEE 754 Double Precision Floating Point Visualization"></a>IEEE 754 Double Precision Floating Point Visualization</h1><p><a href="https://github.com/bartaz/ieee754-visualization" target="_blank" rel="noopener">https://github.com/bartaz/ieee754-visualization</a></p>
+<p><img src="/2019/01/31/implement-a-PS1-emulator-02/fpu.png" alt=""></p>
+<p><a href="https://bartaz.github.io/ieee754-visualization/" target="_blank" rel="noopener">https://bartaz.github.io/ieee754-visualization/</a></p>
+<h3 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h3><ul>
+<li>CS 3339 MIPS  at Texas State University<ul>
+<li><a href="https://github.com/raulbehl/projects/tree/master/cpu_mips_cpp/project5" target="_blank" rel="noopener">https://github.com/raulbehl/projects/tree/master/cpu_mips_cpp/project5</a></li>
+<li><a href="https://github.com/aggroskater/cs3339-computer-architecture" target="_blank" rel="noopener">https://github.com/aggroskater/cs3339-computer-architecture</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://twopothead.github.io/2019/01/31/implement-a-PS1-emulator-02/" data-id="cjrllq5i500092nd2tv791hqn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Make-an-emulator" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/30/Make-an-emulator/" class="article-date">
+  <time datetime="2019-01-30T13:26:42.000Z" itemprop="datePublished">2019-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/30/Make-an-emulator/">Make an emulator</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.reddit.com/r/MakeAnEmulator" target="_blank" rel="noopener">https://www.reddit.com/r/MakeAnEmulator</a></p>
+<p>youtube-dl <a href="https://www.youtube.com/watch?v=1e0OCwlaEZM" target="_blank" rel="noopener">https://www.youtube.com/watch?v=1e0OCwlaEZM</a></p>
+<h1 id="Creating-a-MicroBlaze-emulator-in-C-11-runs-Linux"><a href="#Creating-a-MicroBlaze-emulator-in-C-11-runs-Linux" class="headerlink" title="Creating a MicroBlaze emulator in C++11 (runs Linux!)"></a>Creating a MicroBlaze emulator in C++11 (runs Linux!)</h1><p><a href="https://bisqwit.iki.fi/jutut/kuvat/programming_examples/microblaze" target="_blank" rel="noopener">https://bisqwit.iki.fi/jutut/kuvat/programming_examples/microblaze</a></p>
+<p><a href="https://astr0baby.wordpress.com/2017/07/07/computer-archeology-ultrix/" target="_blank" rel="noopener">https://astr0baby.wordpress.com/2017/07/07/computer-archeology-ultrix/</a></p>
+<p><a href="http://ns4.reboot.net.au/hardware/Ultrix/Ultrix/" target="_blank" rel="noopener">http://ns4.reboot.net.au/hardware/Ultrix/Ultrix/</a></p>
+<p><a href="http://emubook.emulation64.com/" target="_blank" rel="noopener">http://emubook.emulation64.com/</a></p>
+<h2 id="PSXOS"><a href="#PSXOS" class="headerlink" title="PSXOS"></a>PSXOS</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install bchunk</span><br><span class="line"><span class="comment"># http://www.ubuntugeek.com/how-to-convert-bincue-files-to-iso-in-ubuntu.html</span></span><br><span class="line"><span class="comment"># https://github.com/XaviDCR92/PSXOS/blob/master/Bin/PSXOS.cue</span></span><br><span class="line">sudo apt install pcsxr</span><br><span class="line">bchunk PSXOS.bin PSXOS.cue PSXOS.iso</span><br><span class="line">pcsxr</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://twopothead.github.io/2019/01/30/Make-an-emulator/" data-id="cjrllq5hw00022nd201bmwpgm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-learn-opengl-01" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/30/learn-opengl-01/" class="article-date">
+  <time datetime="2019-01-30T06:29:46.000Z" itemprop="datePublished">2019-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/30/learn-opengl-01/">learn opengl 01</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>Install the GLFW3 and FreeType libraries:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libglfw3-dev</span><br><span class="line">sudo apt-get install libfreetype6-dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libgl1-mesa-dev libglu1-mesa-dev</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="安装-GLFW"><a href="#安装-GLFW" class="headerlink" title="安装 GLFW"></a>安装 GLFW</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libglfw3-dev</span><br><span class="line">git clone https://github.com/glfw/glfw</span><br><span class="line">mkdir build &amp;&amp; cd build &amp;&amp; cmake ../glfw &amp;&amp; make -j4 &amp;&amp; sudo make install</span><br></pre></td></tr></table></figure>
+<ul>
+<li><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://twopothead.github.io/2019/01/30/learn-opengl-01/" data-id="cjrllq5i7000c2nd2fjc5tczv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CMU-MIPS" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/29/CMU-MIPS/" class="article-date">
+  <time datetime="2019-01-29T03:03:06.000Z" itemprop="datePublished">2019-01-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/29/CMU-MIPS/">CMU MIPS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MIPS-–-Carnegie-Mellon-Introduction-to-Computer-Architecture-course"><a href="#MIPS-–-Carnegie-Mellon-Introduction-to-Computer-Architecture-course" class="headerlink" title="MIPS – Carnegie Mellon Introduction to Computer Architecture course"></a>MIPS – Carnegie Mellon Introduction to Computer Architecture course</h3><ul>
+<li>(18-447)<ul>
+<li><a href="http://www.archive.ece.cmu.edu/~ece447/s15/doku.php?id=schedule" target="_blank" rel="noopener">http://www.archive.ece.cmu.edu/~ece447/s15/doku.php?id=schedule</a></li>
+<li><a href="http://www.archive.ece.cmu.edu/~ece447/s15/doku.php?id=labs" target="_blank" rel="noopener">http://www.archive.ece.cmu.edu/~ece447/s15/doku.php?id=labs</a></li>
+<li><a href="https://github.com/juliatuttle/tmips" target="_blank" rel="noopener">https://github.com/juliatuttle/tmips</a></li>
+<li><a href="https://github.com/Sacusa/MIPSIM" target="_blank" rel="noopener">https://github.com/Sacusa/MIPSIM</a></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install spim</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://twopothead.github.io/2019/01/29/CMU-MIPS/" data-id="cjrllq5ho00002nd2e19dbiuu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-OJ-Input-and-Output" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/27/OJ-Input-and-Output/" class="article-date">
+  <time datetime="2019-01-27T10:30:01.000Z" itemprop="datePublished">2019-01-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/27/OJ-Input-and-Output/">OJ: Input and Output</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+         <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python a.py &lt; in.txt</span><br></pre></td></tr></table></figure>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a href="https://blog.csdn.net/luovilonia/article/details/40860323" target="_blank" rel="noopener">[精华]ACM八大输入输出格式之Python版</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://twopothead.github.io/2019/01/27/OJ-Input-and-Output/" data-id="cjrllq5hz00042nd2mnl9ue98" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-implement-a-PS1-emulator-01" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/26/implement-a-PS1-emulator-01/" class="article-date">
@@ -88,13 +325,101 @@
 <p>0xbfc0_0000-0xbcfc7_ffff <strong>BIOS</strong>:(512K) </p>
 <p>Sony Playstation1’s BIOS firmware: SCPH1001.BIN</p>
 <p><img src="/2019/01/26/implement-a-PS1-emulator-01/0xbfc00000.png" alt=""></p>
+<h3 id="MSYS2-is-a-software-distro-and-building-platform-for-Windows"><a href="#MSYS2-is-a-software-distro-and-building-platform-for-Windows" class="headerlink" title="MSYS2 is a software distro and building platform for Windows"></a><a href="http://www.msys2.org/" target="_blank" rel="noopener">MSYS2</a> is a software distro and building platform for Windows</h3><p>MSYS2 is software distribution and a building platform for Windows. It provides a Unix-like environment, a command-line interface and a software repository making it easier to install, use, build and port software on Windows. That means Bash, Autotools, Make, Git, GCC, GDB…, all easily installable through Pacman, a fully-featured package manager.</p>
+<h2 id="PlayStation-1-Linux-PSXLinux-RUNIX"><a href="#PlayStation-1-Linux-PSXLinux-RUNIX" class="headerlink" title="PlayStation 1 Linux - PSXLinux (RUNIX)"></a><a href="http://www.psxdev.net/forum/viewtopic.php?f=57&amp;t=198" target="_blank" rel="noopener">PlayStation 1 Linux - PSXLinux (RUNIX)</a></h2><p><strong>PSXLinux</strong> (also known as <strong>Runix</strong>) is a Linux <a href="https://en.wikipedia.org/wiki/Kernel_(computer_science" target="_blank" rel="noopener">kernel</a>) and development kit for the <a href="https://en.wikipedia.org/wiki/PlayStation" target="_blank" rel="noopener">PlayStation</a> (MIPS-NOMMU). PSXLinux is based on the <a href="https://en.wikipedia.org/wiki/%CE%9CClinux" target="_blank" rel="noopener">μClinux</a> 2.4.x kernel and contains specific support for the Sony PlayStation.</p>
+<h4 id="PSXLinux"><a href="#PSXLinux" class="headerlink" title="PSXLinux"></a>PSXLinux</h4><p><a href="http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152&amp;p=13419#p13419" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152&amp;p=13419#p13419</a></p>
+<h2 id="PSXLINUX-EXE-ok-very-good"><a href="#PSXLINUX-EXE-ok-very-good" class="headerlink" title="PSXLINUX.EXE (ok,very good)"></a><a href="http://www.psxdev.net/forum/download/file.php?id=1259" target="_blank" rel="noopener">PSXLINUX.EXE</a> (ok,very good)</h2><p>Yes linux was actually ported to PSX but its very hard to find the files</p>
+<p>here is a list of the files from the now dead ftp:</p>
+<p><a href="http://www.filewatcher.com/b/ftp/ftp.ware.ru/unix/linux/kernel.0.0.html" target="_blank" rel="noopener">http://www.filewatcher.com/b/ftp/ftp…ernel.0.0.html</a></p>
+<p>PSXLinux-kernel-2.4.x-beta1.tar.gz is the one to look out for.</p>
+<p>a small wiki article about it <a href="http://en.wikipedia.org/wiki/Runix" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Runix</a></p>
+<p><a href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/runix-archive/PSXLinux-cross-tools-i586.tar.gz" target="_blank" rel="noopener">PSXLinux-cross-tools-i586.tar.gz</a></p>
+<p><a href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/runix-archive/howto_en.txt" target="_blank" rel="noopener">howto_en.txt</a></p>
+<p><a href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/runix-archive/PSXLinux-kernel-2.4.x-alpha2.tar.gz" target="_blank" rel="noopener">PSXLinux-kernel-2.4.x-alpha2.tar.gz</a></p>
+<h2 id="https-code-google-com-archive-p-runix-archive-downloads-PSXLinux-download"><a href="#https-code-google-com-archive-p-runix-archive-downloads-PSXLinux-download" class="headerlink" title="https://code.google.com/archive/p/runix-archive/downloads (PSXLinux download)"></a><a href="https://code.google.com/archive/p/runix-archive/downloads" target="_blank" rel="noopener">https://code.google.com/archive/p/runix-archive/downloads</a> (PSXLinux download)</h2><p><a href="https://www.psdevwiki.com/" target="_blank" rel="noopener">https://www.psdevwiki.com/</a></p>
+<p><a href="https://www.revolvy.com/folder/Lightweight-Unix-like-systems/135800" target="_blank" rel="noopener">https://www.revolvy.com/folder/Lightweight-Unix-like-systems/135800</a></p>
+<h3 id="PlayStationLinux"><a href="#PlayStationLinux" class="headerlink" title="PlayStationLinux"></a>PlayStationLinux</h3><p><a href="https://en.wikipedia.org/wiki/PSXLinux" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/PSXLinux</a></p>
+<p><a href="http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152</a></p>
+<p>I think Linux is a bit ambitious for a 33Mhz machine, probably why it was scrapped in favor of PS2 Linux.</p>
+<p>Better alternatives would be:<br><a href="http://elks.sourceforge.net/" target="_blank" rel="noopener">http://elks.sourceforge.net/</a><br><a href="https://github.com/EtchedPixels/FUZIX" target="_blank" rel="noopener">https://github.com/EtchedPixels/FUZIX</a><br><a href="http://www.freertos.org/" target="_blank" rel="noopener">http://www.freertos.org/</a><br><a href="http://minix3.org/" target="_blank" rel="noopener">http://minix3.org</a><br><a href="https://github.com/HelenOS/helenos" target="_blank" rel="noopener">https://github.com/HelenOS/helenos</a> (looks like it has MIPS R3000 CPU support)</p>
+<p><a href="https://en.wikipedia.org/wiki/Ancient_UNIX" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Ancient_UNIX</a> (<a href="http://minnie.tuhs.org/cgi-bin/utree.pl" target="_blank" rel="noopener">http://minnie.tuhs.org/cgi-bin/utree.pl</a>)</p>
+<p>Loading the compiled RUNIX binary (PS-EXE) into a PlayStation may be done by using a Serial Adapter (such as the Net Yaroze Serial Cable) or Parallel Port device (Xplorer). Another method is by installing a modchip within the PlayStation and burning a CD-ROM containing the executable data that will allow the system to boot burned discs.</p>
+<p><a href="http://www.psxdev.net/forum/viewtopic.php?f=70&amp;t=765" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?f=70&amp;t=765</a></p>
+<h2 id="Compiling-RUNIX-PSXLinux"><a href="#Compiling-RUNIX-PSXLinux" class="headerlink" title="Compiling RUNIX (PSXLinux)"></a><a href="http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152" target="_blank" rel="noopener">Compiling RUNIX (PSXLinux)</a></h2><p><a href="https://www.reddit.com/r/emulation/comments/1a31qf/jpsx_a_very_fast_psx_emulator_written_in_java_the/" target="_blank" rel="noopener">https://www.reddit.com/r/emulation/comments/1a31qf/jpsx_a_very_fast_psx_emulator_written_in_java_the/</a></p>
+<h3 id="Play-Station-1-Games"><a href="#Play-Station-1-Games" class="headerlink" title="Play Station 1 Games"></a>Play Station 1 Games</h3><p><a href="http://www.psxdev.net/homebrew.html" target="_blank" rel="noopener">http://www.psxdev.net/homebrew.html</a></p>
+<p><a href="http://www.psxdev.net/forum/viewtopic.php?t=1635" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?t=1635</a></p>
+<p><a href="https://www.mediafire.com/file/2nan15u2m19nnzg/mipsgcc.zip/file" target="_blank" rel="noopener">MIPSGCC</a></p>
+<h3 id="mips-as-mips-gcc"><a href="#mips-as-mips-gcc" class="headerlink" title="mips-as mips-gcc"></a>mips-as mips-gcc</h3><p><a href="https://github.com/rhexsel/cmips/blob/master/cMIPS/docs/installCrosscompiler" target="_blank" rel="noopener">https://github.com/rhexsel/cmips/blob/master/cMIPS/docs/installCrosscompiler</a></p>
+<h3 id="Minimal-MIPS-kernel"><a href="#Minimal-MIPS-kernel" class="headerlink" title="Minimal MIPS kernel"></a>Minimal MIPS kernel</h3><p><a href="https://github.com/ineganov/cpu_4/tree/master/soft" target="_blank" rel="noopener">https://github.com/ineganov/cpu_4/tree/master/soft</a></p>
+<h3 id="PSX-gcc"><a href="#PSX-gcc" class="headerlink" title="PSX-gcc"></a>PSX-gcc</h3><p><a href="https://github.com/XaviDCR92/PSXOS/blob/master/Source/Makefile" target="_blank" rel="noopener">https://github.com/XaviDCR92/PSXOS/blob/master/Source/Makefile</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Q: How do I compile a program?</span><br><span class="line"></span><br><span class="line">A: This is easy. It is done almost as you do it usually, but with an additional step:</span><br><span class="line"></span><br><span class="line">psx-gcc -o myprogram myprogram.c</span><br><span class="line">elf2exe myprogram myprogram.exe</span><br><span class="line"></span><br><span class="line">Why the additional step? It is needed because the GNU compiler outputs an ELF executable file,</span><br><span class="line">which can&apos;t be run on the PlayStation. elf2exe converts that ELF file to a PS-X EXE, which</span><br><span class="line">is the PlayStation&apos;s executable format, and which can be booted.</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/XaviDCR92/psxsdk-20150729/blob/master/toolchain.txt" target="_blank" rel="noopener">https://github.com/XaviDCR92/psxsdk-20150729/blob/master/toolchain.txt</a></p>
+<h3 id="PlayStation-GNU-Toolchain"><a href="#PlayStation-GNU-Toolchain" class="headerlink" title="PlayStation GNU Toolchain"></a>PlayStation GNU Toolchain</h3><h3 id="TUTORIAL-Setting-up-the-PSXSDK-under-Cygwin"><a href="#TUTORIAL-Setting-up-the-PSXSDK-under-Cygwin" class="headerlink" title="[TUTORIAL] Setting up the PSXSDK under Cygwin"></a><a href="http://www.psxdev.net/forum/viewtopic.php?t=40#p13123" target="_blank" rel="noopener">[TUTORIAL] Setting up the PSXSDK under Cygwin</a></h3><p><a href="http://www.psxdev.net/forum/viewtopic.php?t=40" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?t=40</a></p>
+<p><strong>PRECOMPILED TOOLCHAINS</strong></p>
+<p><a href="http://unhaut.x10host.com/psxsdk/" target="_blank" rel="noopener">http://unhaut.x10host.com/psxsdk/</a><br>These toolchains contain binutils, GCC (compiled with C and C++ support) for the MIPS R3000 CPU and the PSXSDK libraries and tools.<br>With these toolchains, you’re up and running, ready to develop for the Sony Playstation.</p>
+<ul>
+<li>20180115 (January 15th, 2018)<ul>
+<li><a href="http://unhaut.x10host.com/psxsdk/psxsdk-20180115-linux-amd64-toolchain.txz" target="_blank" rel="noopener">Linux amd64/x86_64 - Binutils 2.29.1, GCC 7.2.0</a><br>Compiled on a glibc 2.26 system.</li>
+</ul>
+</li>
+<li>20150729 (July 29th, 2015)<ul>
+<li><a href="http://unhaut.x10host.com/psxsdk/psxsdk-20150729-linux-i686-toolchain.tar.xz" target="_blank" rel="noopener">Linux i686 - Binutils 2.25, GCC 5.2.0</a><br>Compiled on a glibc 2.18 system, so it will work on most distributions released since 2013.</li>
+</ul>
+</li>
+<li>20140422 (April 22nd, 2014)<ul>
+<li><a href="http://unhaut.x10host.com/psxsdk/psxsdk-20140422-linux-i686-toolchain.tar.xz" target="_blank" rel="noopener">Linux i686 - Binutils 2.24, GCC 4.9.0</a><br>Compiled on a glibc 2.11 system, so it will work on most distributions released since 2010.</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Ancient_UNIX" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Ancient_UNIX</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Turing_machine" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Turing_machine</a></p>
+<p><a href="http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152&amp;start=20" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152&amp;start=20</a></p>
+<p><a href="http://www.psxdev.net/forum/download/file.php?id=1271" target="_blank" rel="noopener">psxlinux-build-makefile.zip</a></p>
+<p><a href="http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152&amp;p=13419#p13419" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152&amp;p=13419#p13419</a></p>
+<h3 id="PCSXR"><a href="#PCSXR" class="headerlink" title="PCSXR"></a>PCSXR</h3><p>PCSX-Reloaded</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install pcsxr</span><br><span class="line">youtube-dl https://www.youtube.com/watch?v=AF_34ZpWDLA</span><br><span class="line">pcsxr -nogui -cdfile prueba.bin</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.youtube.com/watch?v=nh6KTFKNXV4" target="_blank" rel="noopener">https://www.youtube.com/watch?v=nh6KTFKNXV4</a></p>
+<p>pcsxr: ../libpcsxcore/ix86_64/ix86-64.c:160: MEMADDR_OP: Assertion `!isreg || reg != X86_TEMP’ failed.</p>
+<p>~/.pcsxr/pcsxr.cfg</p>
+<p>change change CPU =0 to CPU=1</p>
+<p><a href="https://www.geekshangout.com/pcsxr-ubuntu-libpcsxcoreix86_64ix86-64-c160-memaddr_op-assertion-isreg-reg-x86_temp-failed/" target="_blank" rel="noopener">https://www.geekshangout.com/pcsxr-ubuntu-libpcsxcoreix86_64ix86-64-c160-memaddr_op-assertion-isreg-reg-x86_temp-failed/</a></p>
+<h3 id="Documents-from-psxdev-net"><a href="#Documents-from-psxdev-net" class="headerlink" title="Documents from psxdev.net"></a>Documents from psxdev.net</h3><p><a href="https://www.box.com/s/5917337e62e9d034c6c1" target="_blank" rel="noopener">MIPS Instruction Set</a> The instruction set for the PlayStation 1 R3000A CPU</p>
+<blockquote>
+<p>Ideally I’d like to make a PS1 emulator, but I’m assuming this is something very advanced?</p>
+</blockquote>
+<p>IMO, this would be tough for an experienced individual to do in a year, unless they have a particular aptitude. I’m a decent coder, but not amazing, and I’d think of starting a PSX emulator as a long-term commitment.</p>
+<p><a href="https://www.reddit.com/r/EmuDev/comments/4ukjaf/virtual_memory_in_ps1_bios/" target="_blank" rel="noopener">https://www.reddit.com/r/EmuDev/comments/4ukjaf/virtual_memory_in_ps1_bios/</a></p>
+<p>Hi nazboul, here are some answers as I went through this last year. First of all, virtual memory is not used in the PSX (even though the processor design it was based on allowed for it). That means you won’t have to worry about implementing all COP0 instructions (especially the ones related to TLB). That said, you still need to emulate the instruction cache, and what you are seeing is the BIOS filling it manually there. The cache control register (0xFFFE0130) contains important bits such as IsC (isolate cache), which does exactly this: it isolates cache from main memory so those writes won’t end up in main memory but in the instruction cache itself. The BIOS will then execute the content written afterwards - it is actual code. Hope this helps, and good luck to you!</p>
+<p><a href="https://www.reddit.com/r/EmuDev/comments/adslee/where_to_start_learning/" target="_blank" rel="noopener">https://www.reddit.com/r/EmuDev/comments/adslee/where_to_start_learning/</a></p>
+<h3 id="Github-Resources"><a href="#Github-Resources" class="headerlink" title="Github Resources"></a>Github Resources</h3><p><a href="https://github.com/sronsse/emux/blob/psx/cpu/r3051.c" target="_blank" rel="noopener">https://github.com/sronsse/emux/blob/psx/cpu/r3051.c</a></p>
+<p><a href="https://seubz.blogspot.com/2016/08/round-1-fight.html" target="_blank" rel="noopener">https://seubz.blogspot.com/2016/08/round-1-fight.html</a></p>
+<p><a href="https://seubz.blogspot.com/" target="_blank" rel="noopener">https://seubz.blogspot.com/</a></p>
+<p><a href="https://seubz.blogspot.com/2015/12/psx-stuff.html" target="_blank" rel="noopener">https://seubz.blogspot.com/2015/12/psx-stuff.html</a></p>
+<p>Once I manage to get some basic CD-ROM emulation, I should be able to reach the BIOS code path responsible for rendering the PS logo - this will also require the GTE to be working somewhat correctly (the geometry transformation engine is a co-processor responsible for 3D transformations, separate from the GPU which only handles 2D rendering). Let’s hope for the best!</p>
+<p>I quickly tested faking some more CD-ROM commands and make the BIOS believe that a licensed game was inserted - this should normally lead to the well-known PlayStation logo. The screen does show up, but without the 3D rendered logo due to the lack of GTE support at this moment. Hopefully, that should be my next update!</p>
+<h3 id="Tutorials"><a href="#Tutorials" class="headerlink" title="Tutorials"></a>Tutorials</h3><ul>
+<li><a href="https://github.com/pyk/cmake-tutorial" target="_blank" rel="noopener">https://github.com/pyk/cmake-tutorial</a></li>
+<li><a href="https://github.com/dkoluris/pseudo" target="_blank" rel="noopener">https://github.com/dkoluris/pseudo</a></li>
+<li><a href="https://github.com/morriswmz/SimpleMIPS.js" target="_blank" rel="noopener">https://github.com/morriswmz/SimpleMIPS.js</a></li>
+<li><a href="https://github.com/nothings/single_file_libs" target="_blank" rel="noopener">https://github.com/nothings/single_file_libs</a></li>
+<li><a href="https://github.com/lieff/minimp3" target="_blank" rel="noopener">https://github.com/lieff/minimp3</a></li>
+<li><a href="https://github.com/EtchedPixels/IDE" target="_blank" rel="noopener">https://github.com/EtchedPixels/IDE</a></li>
+<li><a href="https://github.com/JointEntropy/modern_langs/tree/master/pscx_emulator" target="_blank" rel="noopener">https://github.com/JointEntropy/modern_langs/tree/master/pscx_emulator</a></li>
+<li><a href="https://github.com/hxzwd/ps-emul-2" target="_blank" rel="noopener">https://github.com/hxzwd/ps-emul-2</a></li>
+<li><a href="https://github.com/ogamespec/psxdev" target="_blank" rel="noopener">https://github.com/ogamespec/psxdev</a></li>
+<li><a href="http://www.psxdev.net/" target="_blank" rel="noopener">http://www.psxdev.net/</a></li>
+<li><a href="https://en.wikipedia.org/wiki/PSXLinux" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/PSXLinux</a></li>
+<li><a href="https://github.com/Quaker762/psxact" target="_blank" rel="noopener">https://github.com/Quaker762/psxact</a> (very good)</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://twopothead.github.io/2019/01/26/implement-a-PS1-emulator-01/" data-id="cjrdngf4d0001mxd2wtlpkox7" class="article-share-link">Share</a>
+      <a data-url="https://twopothead.github.io/2019/01/26/implement-a-PS1-emulator-01/" data-id="cjrllq5i6000b2nd2ai4ee6kc" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MIPS/">MIPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PlayStation/">PlayStation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emulator/">emulator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/r3000/">r3000</a></li></ul>
+
     </footer>
   </div>
   
@@ -174,7 +499,11 @@
 <p><a href="https://github.com/faouellet/PSEmu" target="_blank" rel="noopener">https://github.com/faouellet/PSEmu</a></p>
 <p><a href="https://github.com/Quaker762/NeoPS" target="_blank" rel="noopener">https://github.com/Quaker762/NeoPS</a> (doc)</p>
 <p><a href="https://github.com/hxzwd/mips_disassembler" target="_blank" rel="noopener">https://github.com/hxzwd/mips_disassembler</a></p>
+<p><a href="https://github.com/googl4/LPSX" target="_blank" rel="noopener">https://github.com/googl4/LPSX</a></p>
 <h3 id="Related-Blogs"><a href="#Related-Blogs" class="headerlink" title="Related Blogs"></a>Related Blogs</h3><p><a href="https://aldelaro5.wordpress.com/2018/07/20/the-pain-of-researching-games-with-an-nintendo-64-emulator/" target="_blank" rel="noopener">https://aldelaro5.wordpress.com/2018/07/20/the-pain-of-researching-games-with-an-nintendo-64-emulator/</a></p>
+<p><a href="http://www.retrochallenge.org/" target="_blank" rel="noopener">http://www.retrochallenge.org/</a></p>
+<p><a href="https://github.com/trcwm/HD6309-Computer" target="_blank" rel="noopener">https://github.com/trcwm/HD6309-Computer</a></p>
+<p><a href="http://www.retrochallenge.org/p/entrants-list-201809.html" target="_blank" rel="noopener">http://www.retrochallenge.org/p/entrants-list-201809.html</a></p>
 <h3 id="Nintendo-64"><a href="#Nintendo-64" class="headerlink" title="Nintendo_64"></a>Nintendo_64</h3><p>N64 is <strong>too hard</strong>!</p>
 <p><strong>Reality Coprocessor</strong> (RCP) is one of the <a href="https://en.wikipedia.org/wiki/Nintendo_64" target="_blank" rel="noopener">Nintendo 64</a>‘s two main chips, alongside the <a href="https://en.wikipedia.org/wiki/NEC" target="_blank" rel="noopener">NEC</a> <a href="https://en.wikipedia.org/wiki/VR4300" target="_blank" rel="noopener">VR4300</a>, a derivative of the <a href="https://en.wikipedia.org/wiki/MIPS_Technologies" target="_blank" rel="noopener">MIPS</a> <a href="https://en.wikipedia.org/wiki/R4200" target="_blank" rel="noopener">R4200</a>. The RCP was developed by <a href="https://en.wikipedia.org/wiki/Silicon_Graphics" target="_blank" rel="noopener">Silicon Graphics</a> for Nintendo, specifically for the Nintendo 64 video game console.</p>
 <p>The RCP consists of two main components: the Reality Signal Processor (RSP) and the Reality Display Processor (RDP).</p>
@@ -226,12 +555,13 @@
 <li><a href="http://act.buaa.edu.cn/hsun/os2017/os.html" target="_blank" rel="noopener">http://act.buaa.edu.cn/hsun/os2017/os.html</a></li>
 <li><a href="http://czekanski.info/" target="_blank" rel="noopener">http://czekanski.info/</a></li>
 <li><a href="http://wiki.nesdev.com/w/index.php/Nesdev_Wiki" target="_blank" rel="noopener">http://wiki.nesdev.com/w/index.php/Nesdev_Wiki</a></li>
+<li><a href="https://en.wikipedia.org/wiki/PlayStation_models" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/PlayStation_models</a></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://twopothead.github.io/2019/01/23/Explore-Sony-Playstation/" data-id="cjrdngf490000mxd20l4v4xx0" class="article-share-link">Share</a>
+      <a data-url="https://twopothead.github.io/2019/01/23/Explore-Sony-Playstation/" data-id="cjrllq5hv00012nd2yxiqzazk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MIPS/">MIPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PlayStation/">PlayStation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emulator/">emulator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/r3000/">r3000</a></li></ul>
@@ -294,7 +624,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://twopothead.github.io/2019/01/22/try-ECNU-OJ/" data-id="cjrdngf4q0007mxd26r1ng9dg" class="article-share-link">Share</a>
+      <a data-url="https://twopothead.github.io/2019/01/22/try-ECNU-OJ/" data-id="cjrllq5ls000r2nd23gyz1vmt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECNU-OJ/">ECNU-OJ</a></li></ul>
@@ -335,7 +665,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://twopothead.github.io/2019/01/21/Oh-I-am-fucking-cumming/" data-id="cjrdngf4h0003mxd2yuoktnlv" class="article-share-link">Share</a>
+      <a data-url="https://twopothead.github.io/2019/01/21/Oh-I-am-fucking-cumming/" data-id="cjrllq5i300082nd2jpvjvpg2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vjudge/">vjudge</a></li></ul>
@@ -382,48 +712,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://twopothead.github.io/2019/01/21/hello-world/" data-id="cjrdngf4j0004mxd27xi1w37t" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-blog-backup" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/21/blog-backup/" class="article-date">
-  <time datetime="2019-01-21T12:04:34.000Z" itemprop="datePublished">2019-01-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/21/blog-backup/">blog-backup</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ln ./* /home/curie/gitcode/twopothead.github.io/<span class="built_in">source</span>/_posts</span><br><span class="line"><span class="built_in">cd</span> ../twopothead.github.io/public/</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"auto-submit 'public' "</span></span><br><span class="line"><span class="comment"># git remote add origin  https://github.com/Twopothead/twopothead.github.io.git</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<p>submit.sh</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ln ./* /home/curie/gitcode/twopothead.github.io/source/_posts</span></span><br><span class="line"><span class="built_in">cd</span> ../blog-backup/</span><br><span class="line">ln ../twopothead.github.io/<span class="built_in">source</span>/_posts/* ./</span><br><span class="line"><span class="comment">########## update private github repository "blog-backup" </span></span><br><span class="line"><span class="comment"># all source files will be modified and updated in a newly created github repository "blog-backup"</span></span><br><span class="line"><span class="built_in">cd</span> ../blog-backup/</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"auto-submit 'private repository blog-backup' "</span></span><br><span class="line"><span class="comment"># git remote add origin  https://github.com/Twopothead/blog-backup.git</span></span><br><span class="line">git push -u origin master</span><br><span class="line"><span class="comment">########## update public github repository "twopothead.github.io"</span></span><br><span class="line"><span class="built_in">cd</span> ../twopothead.github.io/public/</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"auto-submit 'public' "</span></span><br><span class="line"><span class="comment"># git remote add origin  https://github.com/Twopothead/twopothead.github.io.git</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ln -s ~/gitcode/blog-backup/assets /home/curie/gitcode/twopothead.github.io/<span class="built_in">source</span>/_posts/assets</span><br><span class="line">hexo g &amp;&amp; hexo d</span><br><span class="line">hexo server</span><br><span class="line">npm install hexo-asset-image --save</span><br><span class="line">https://blog.csdn.net/qq_40265501/article/details/80019774</span><br><span class="line"><span class="comment">###########</span></span><br><span class="line"><span class="built_in">cd</span> public</span><br><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"first commit (public folder)"</span></span><br><span class="line">git remote add origin  https://github.com/Twopothead/twopothead.github.io.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/01/21/blog-backup/mbuntu-0.jpg" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://twopothead.github.io/2019/01/21/blog-backup/" data-id="cjrdngf4l0005mxd2e38zmtwy" class="article-share-link">Share</a>
+      <a data-url="https://twopothead.github.io/2019/01/21/hello-world/" data-id="cjrllq5i100052nd2twfzoxur" class="article-share-link">Share</a>
       
       
     </footer>
@@ -434,6 +723,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -456,7 +750,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ECNU-OJ/" style="font-size: 10px;">ECNU-OJ</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/MIPS/" style="font-size: 10px;">MIPS</a> <a href="/tags/PlayStation/" style="font-size: 10px;">PlayStation</a> <a href="/tags/emulator/" style="font-size: 10px;">emulator</a> <a href="/tags/r3000/" style="font-size: 10px;">r3000</a> <a href="/tags/vjudge/" style="font-size: 10px;">vjudge</a>
+      <a href="/tags/ECNU-OJ/" style="font-size: 10px;">ECNU-OJ</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/MIPS/" style="font-size: 20px;">MIPS</a> <a href="/tags/PlayStation/" style="font-size: 20px;">PlayStation</a> <a href="/tags/emulator/" style="font-size: 20px;">emulator</a> <a href="/tags/r3000/" style="font-size: 20px;">r3000</a> <a href="/tags/vjudge/" style="font-size: 10px;">vjudge</a>
     </div>
   </div>
 
@@ -478,23 +772,23 @@
       <ul>
         
           <li>
-            <a href="/2019/01/26/implement-a-PS1-emulator-01/">implement a PS1 emulator 01</a>
+            <a href="/2019/01/31/implement-a-PS1-emulator-02/">implement-a-PS1-emulator-02</a>
           </li>
         
           <li>
-            <a href="/2019/01/23/Explore-Sony-Playstation/">Explore Sony Playstation!</a>
+            <a href="/2019/01/30/Make-an-emulator/">Make an emulator</a>
           </li>
         
           <li>
-            <a href="/2019/01/22/try-ECNU-OJ/">try ECNU-OJ</a>
+            <a href="/2019/01/30/learn-opengl-01/">learn opengl 01</a>
           </li>
         
           <li>
-            <a href="/2019/01/21/Oh-I-am-fucking-cumming/">Oh,I am fucking cumming</a>
+            <a href="/2019/01/29/CMU-MIPS/">CMU MIPS</a>
           </li>
         
           <li>
-            <a href="/2019/01/21/hello-world/">Hello World</a>
+            <a href="/2019/01/27/OJ-Input-and-Output/">OJ: Input and Output</a>
           </li>
         
       </ul>

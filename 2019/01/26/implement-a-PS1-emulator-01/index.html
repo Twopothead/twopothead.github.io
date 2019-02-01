@@ -7,19 +7,20 @@
   
   <title>implement a PS1 emulator 01 | Curie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="PlayStation1 memory map 0xbfc0_0000-0xbcfc7_ffff BIOS:(512K)  Sony Playstation1’s BIOS firmware: SCPH1001.BIN">
+  <meta name="description" content="PlayStation1 memory map 0xbfc0_0000-0xbcfc7_ffff BIOS:(512K)  Sony Playstation1’s BIOS firmware: SCPH1001.BIN  MSYS2 is a software distro and building platform for WindowsMSYS2 is software distributio">
+<meta name="keywords" content="MIPS,PlayStation,r3000,emulator">
 <meta property="og:type" content="article">
 <meta property="og:title" content="implement a PS1 emulator 01">
 <meta property="og:url" content="https://twopothead.github.io/2019/01/26/implement-a-PS1-emulator-01/index.html">
 <meta property="og:site_name" content="Curie">
-<meta property="og:description" content="PlayStation1 memory map 0xbfc0_0000-0xbcfc7_ffff BIOS:(512K)  Sony Playstation1’s BIOS firmware: SCPH1001.BIN">
+<meta property="og:description" content="PlayStation1 memory map 0xbfc0_0000-0xbcfc7_ffff BIOS:(512K)  Sony Playstation1’s BIOS firmware: SCPH1001.BIN  MSYS2 is a software distro and building platform for WindowsMSYS2 is software distributio">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://twopothead.github.io/2019/01/26/implement-a-PS1-emulator-01/psx-memory-map.png">
 <meta property="og:image" content="https://twopothead.github.io/2019/01/26/implement-a-PS1-emulator-01/0xbfc00000.png">
-<meta property="og:updated_time" content="2019-01-26T15:45:53.358Z">
+<meta property="og:updated_time" content="2019-01-30T15:59:26.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="implement a PS1 emulator 01">
-<meta name="twitter:description" content="PlayStation1 memory map 0xbfc0_0000-0xbcfc7_ffff BIOS:(512K)  Sony Playstation1’s BIOS firmware: SCPH1001.BIN">
+<meta name="twitter:description" content="PlayStation1 memory map 0xbfc0_0000-0xbcfc7_ffff BIOS:(512K)  Sony Playstation1’s BIOS firmware: SCPH1001.BIN  MSYS2 is a software distro and building platform for WindowsMSYS2 is software distributio">
 <meta name="twitter:image" content="https://twopothead.github.io/2019/01/26/implement-a-PS1-emulator-01/psx-memory-map.png">
   
     <link rel="alternate" href="/atom.xml" title="Curie" type="application/atom+xml">
@@ -93,18 +94,115 @@
 <p>0xbfc0_0000-0xbcfc7_ffff <strong>BIOS</strong>:(512K) </p>
 <p>Sony Playstation1’s BIOS firmware: SCPH1001.BIN</p>
 <p><img src="/2019/01/26/implement-a-PS1-emulator-01/0xbfc00000.png" alt=""></p>
+<h3 id="MSYS2-is-a-software-distro-and-building-platform-for-Windows"><a href="#MSYS2-is-a-software-distro-and-building-platform-for-Windows" class="headerlink" title="MSYS2 is a software distro and building platform for Windows"></a><a href="http://www.msys2.org/" target="_blank" rel="noopener">MSYS2</a> is a software distro and building platform for Windows</h3><p>MSYS2 is software distribution and a building platform for Windows. It provides a Unix-like environment, a command-line interface and a software repository making it easier to install, use, build and port software on Windows. That means Bash, Autotools, Make, Git, GCC, GDB…, all easily installable through Pacman, a fully-featured package manager.</p>
+<h2 id="PlayStation-1-Linux-PSXLinux-RUNIX"><a href="#PlayStation-1-Linux-PSXLinux-RUNIX" class="headerlink" title="PlayStation 1 Linux - PSXLinux (RUNIX)"></a><a href="http://www.psxdev.net/forum/viewtopic.php?f=57&amp;t=198" target="_blank" rel="noopener">PlayStation 1 Linux - PSXLinux (RUNIX)</a></h2><p><strong>PSXLinux</strong> (also known as <strong>Runix</strong>) is a Linux <a href="https://en.wikipedia.org/wiki/Kernel_(computer_science" target="_blank" rel="noopener">kernel</a>) and development kit for the <a href="https://en.wikipedia.org/wiki/PlayStation" target="_blank" rel="noopener">PlayStation</a> (MIPS-NOMMU). PSXLinux is based on the <a href="https://en.wikipedia.org/wiki/%CE%9CClinux" target="_blank" rel="noopener">μClinux</a> 2.4.x kernel and contains specific support for the Sony PlayStation.</p>
+<h4 id="PSXLinux"><a href="#PSXLinux" class="headerlink" title="PSXLinux"></a>PSXLinux</h4><p><a href="http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152&amp;p=13419#p13419" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152&amp;p=13419#p13419</a></p>
+<h2 id="PSXLINUX-EXE-ok-very-good"><a href="#PSXLINUX-EXE-ok-very-good" class="headerlink" title="PSXLINUX.EXE (ok,very good)"></a><a href="http://www.psxdev.net/forum/download/file.php?id=1259" target="_blank" rel="noopener">PSXLINUX.EXE</a> (ok,very good)</h2><p>Yes linux was actually ported to PSX but its very hard to find the files</p>
+<p>here is a list of the files from the now dead ftp:</p>
+<p><a href="http://www.filewatcher.com/b/ftp/ftp.ware.ru/unix/linux/kernel.0.0.html" target="_blank" rel="noopener">http://www.filewatcher.com/b/ftp/ftp…ernel.0.0.html</a></p>
+<p>PSXLinux-kernel-2.4.x-beta1.tar.gz is the one to look out for.</p>
+<p>a small wiki article about it <a href="http://en.wikipedia.org/wiki/Runix" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Runix</a></p>
+<p><a href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/runix-archive/PSXLinux-cross-tools-i586.tar.gz" target="_blank" rel="noopener">PSXLinux-cross-tools-i586.tar.gz</a></p>
+<p><a href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/runix-archive/howto_en.txt" target="_blank" rel="noopener">howto_en.txt</a></p>
+<p><a href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/runix-archive/PSXLinux-kernel-2.4.x-alpha2.tar.gz" target="_blank" rel="noopener">PSXLinux-kernel-2.4.x-alpha2.tar.gz</a></p>
+<h2 id="https-code-google-com-archive-p-runix-archive-downloads-PSXLinux-download"><a href="#https-code-google-com-archive-p-runix-archive-downloads-PSXLinux-download" class="headerlink" title="https://code.google.com/archive/p/runix-archive/downloads (PSXLinux download)"></a><a href="https://code.google.com/archive/p/runix-archive/downloads" target="_blank" rel="noopener">https://code.google.com/archive/p/runix-archive/downloads</a> (PSXLinux download)</h2><p><a href="https://www.psdevwiki.com/" target="_blank" rel="noopener">https://www.psdevwiki.com/</a></p>
+<p><a href="https://www.revolvy.com/folder/Lightweight-Unix-like-systems/135800" target="_blank" rel="noopener">https://www.revolvy.com/folder/Lightweight-Unix-like-systems/135800</a></p>
+<h3 id="PlayStationLinux"><a href="#PlayStationLinux" class="headerlink" title="PlayStationLinux"></a>PlayStationLinux</h3><p><a href="https://en.wikipedia.org/wiki/PSXLinux" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/PSXLinux</a></p>
+<p><a href="http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152</a></p>
+<p>I think Linux is a bit ambitious for a 33Mhz machine, probably why it was scrapped in favor of PS2 Linux.</p>
+<p>Better alternatives would be:<br><a href="http://elks.sourceforge.net/" target="_blank" rel="noopener">http://elks.sourceforge.net/</a><br><a href="https://github.com/EtchedPixels/FUZIX" target="_blank" rel="noopener">https://github.com/EtchedPixels/FUZIX</a><br><a href="http://www.freertos.org/" target="_blank" rel="noopener">http://www.freertos.org/</a><br><a href="http://minix3.org/" target="_blank" rel="noopener">http://minix3.org</a><br><a href="https://github.com/HelenOS/helenos" target="_blank" rel="noopener">https://github.com/HelenOS/helenos</a> (looks like it has MIPS R3000 CPU support)</p>
+<p><a href="https://en.wikipedia.org/wiki/Ancient_UNIX" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Ancient_UNIX</a> (<a href="http://minnie.tuhs.org/cgi-bin/utree.pl" target="_blank" rel="noopener">http://minnie.tuhs.org/cgi-bin/utree.pl</a>)</p>
+<p>Loading the compiled RUNIX binary (PS-EXE) into a PlayStation may be done by using a Serial Adapter (such as the Net Yaroze Serial Cable) or Parallel Port device (Xplorer). Another method is by installing a modchip within the PlayStation and burning a CD-ROM containing the executable data that will allow the system to boot burned discs.</p>
+<p><a href="http://www.psxdev.net/forum/viewtopic.php?f=70&amp;t=765" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?f=70&amp;t=765</a></p>
+<h2 id="Compiling-RUNIX-PSXLinux"><a href="#Compiling-RUNIX-PSXLinux" class="headerlink" title="Compiling RUNIX (PSXLinux)"></a><a href="http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152" target="_blank" rel="noopener">Compiling RUNIX (PSXLinux)</a></h2><p><a href="https://www.reddit.com/r/emulation/comments/1a31qf/jpsx_a_very_fast_psx_emulator_written_in_java_the/" target="_blank" rel="noopener">https://www.reddit.com/r/emulation/comments/1a31qf/jpsx_a_very_fast_psx_emulator_written_in_java_the/</a></p>
+<h3 id="Play-Station-1-Games"><a href="#Play-Station-1-Games" class="headerlink" title="Play Station 1 Games"></a>Play Station 1 Games</h3><p><a href="http://www.psxdev.net/homebrew.html" target="_blank" rel="noopener">http://www.psxdev.net/homebrew.html</a></p>
+<p><a href="http://www.psxdev.net/forum/viewtopic.php?t=1635" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?t=1635</a></p>
+<p><a href="https://www.mediafire.com/file/2nan15u2m19nnzg/mipsgcc.zip/file" target="_blank" rel="noopener">MIPSGCC</a></p>
+<h3 id="mips-as-mips-gcc"><a href="#mips-as-mips-gcc" class="headerlink" title="mips-as mips-gcc"></a>mips-as mips-gcc</h3><p><a href="https://github.com/rhexsel/cmips/blob/master/cMIPS/docs/installCrosscompiler" target="_blank" rel="noopener">https://github.com/rhexsel/cmips/blob/master/cMIPS/docs/installCrosscompiler</a></p>
+<h3 id="Minimal-MIPS-kernel"><a href="#Minimal-MIPS-kernel" class="headerlink" title="Minimal MIPS kernel"></a>Minimal MIPS kernel</h3><p><a href="https://github.com/ineganov/cpu_4/tree/master/soft" target="_blank" rel="noopener">https://github.com/ineganov/cpu_4/tree/master/soft</a></p>
+<h3 id="PSX-gcc"><a href="#PSX-gcc" class="headerlink" title="PSX-gcc"></a>PSX-gcc</h3><p><a href="https://github.com/XaviDCR92/PSXOS/blob/master/Source/Makefile" target="_blank" rel="noopener">https://github.com/XaviDCR92/PSXOS/blob/master/Source/Makefile</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Q: How do I compile a program?</span><br><span class="line"></span><br><span class="line">A: This is easy. It is done almost as you do it usually, but with an additional step:</span><br><span class="line"></span><br><span class="line">psx-gcc -o myprogram myprogram.c</span><br><span class="line">elf2exe myprogram myprogram.exe</span><br><span class="line"></span><br><span class="line">Why the additional step? It is needed because the GNU compiler outputs an ELF executable file,</span><br><span class="line">which can&apos;t be run on the PlayStation. elf2exe converts that ELF file to a PS-X EXE, which</span><br><span class="line">is the PlayStation&apos;s executable format, and which can be booted.</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/XaviDCR92/psxsdk-20150729/blob/master/toolchain.txt" target="_blank" rel="noopener">https://github.com/XaviDCR92/psxsdk-20150729/blob/master/toolchain.txt</a></p>
+<h3 id="PlayStation-GNU-Toolchain"><a href="#PlayStation-GNU-Toolchain" class="headerlink" title="PlayStation GNU Toolchain"></a>PlayStation GNU Toolchain</h3><h3 id="TUTORIAL-Setting-up-the-PSXSDK-under-Cygwin"><a href="#TUTORIAL-Setting-up-the-PSXSDK-under-Cygwin" class="headerlink" title="[TUTORIAL] Setting up the PSXSDK under Cygwin"></a><a href="http://www.psxdev.net/forum/viewtopic.php?t=40#p13123" target="_blank" rel="noopener">[TUTORIAL] Setting up the PSXSDK under Cygwin</a></h3><p><a href="http://www.psxdev.net/forum/viewtopic.php?t=40" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?t=40</a></p>
+<p><strong>PRECOMPILED TOOLCHAINS</strong></p>
+<p><a href="http://unhaut.x10host.com/psxsdk/" target="_blank" rel="noopener">http://unhaut.x10host.com/psxsdk/</a><br>These toolchains contain binutils, GCC (compiled with C and C++ support) for the MIPS R3000 CPU and the PSXSDK libraries and tools.<br>With these toolchains, you’re up and running, ready to develop for the Sony Playstation.</p>
+<ul>
+<li>20180115 (January 15th, 2018)<ul>
+<li><a href="http://unhaut.x10host.com/psxsdk/psxsdk-20180115-linux-amd64-toolchain.txz" target="_blank" rel="noopener">Linux amd64/x86_64 - Binutils 2.29.1, GCC 7.2.0</a><br>Compiled on a glibc 2.26 system.</li>
+</ul>
+</li>
+<li>20150729 (July 29th, 2015)<ul>
+<li><a href="http://unhaut.x10host.com/psxsdk/psxsdk-20150729-linux-i686-toolchain.tar.xz" target="_blank" rel="noopener">Linux i686 - Binutils 2.25, GCC 5.2.0</a><br>Compiled on a glibc 2.18 system, so it will work on most distributions released since 2013.</li>
+</ul>
+</li>
+<li>20140422 (April 22nd, 2014)<ul>
+<li><a href="http://unhaut.x10host.com/psxsdk/psxsdk-20140422-linux-i686-toolchain.tar.xz" target="_blank" rel="noopener">Linux i686 - Binutils 2.24, GCC 4.9.0</a><br>Compiled on a glibc 2.11 system, so it will work on most distributions released since 2010.</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Ancient_UNIX" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Ancient_UNIX</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Turing_machine" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Turing_machine</a></p>
+<p><a href="http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152&amp;start=20" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152&amp;start=20</a></p>
+<p><a href="http://www.psxdev.net/forum/download/file.php?id=1271" target="_blank" rel="noopener">psxlinux-build-makefile.zip</a></p>
+<p><a href="http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152&amp;p=13419#p13419" target="_blank" rel="noopener">http://www.psxdev.net/forum/viewtopic.php?f=55&amp;t=152&amp;p=13419#p13419</a></p>
+<h3 id="PCSXR"><a href="#PCSXR" class="headerlink" title="PCSXR"></a>PCSXR</h3><p>PCSX-Reloaded</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install pcsxr</span><br><span class="line">youtube-dl https://www.youtube.com/watch?v=AF_34ZpWDLA</span><br><span class="line">pcsxr -nogui -cdfile prueba.bin</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.youtube.com/watch?v=nh6KTFKNXV4" target="_blank" rel="noopener">https://www.youtube.com/watch?v=nh6KTFKNXV4</a></p>
+<p>pcsxr: ../libpcsxcore/ix86_64/ix86-64.c:160: MEMADDR_OP: Assertion `!isreg || reg != X86_TEMP’ failed.</p>
+<p>~/.pcsxr/pcsxr.cfg</p>
+<p>change change CPU =0 to CPU=1</p>
+<p><a href="https://www.geekshangout.com/pcsxr-ubuntu-libpcsxcoreix86_64ix86-64-c160-memaddr_op-assertion-isreg-reg-x86_temp-failed/" target="_blank" rel="noopener">https://www.geekshangout.com/pcsxr-ubuntu-libpcsxcoreix86_64ix86-64-c160-memaddr_op-assertion-isreg-reg-x86_temp-failed/</a></p>
+<h3 id="Documents-from-psxdev-net"><a href="#Documents-from-psxdev-net" class="headerlink" title="Documents from psxdev.net"></a>Documents from psxdev.net</h3><p><a href="https://www.box.com/s/5917337e62e9d034c6c1" target="_blank" rel="noopener">MIPS Instruction Set</a> The instruction set for the PlayStation 1 R3000A CPU</p>
+<blockquote>
+<p>Ideally I’d like to make a PS1 emulator, but I’m assuming this is something very advanced?</p>
+</blockquote>
+<p>IMO, this would be tough for an experienced individual to do in a year, unless they have a particular aptitude. I’m a decent coder, but not amazing, and I’d think of starting a PSX emulator as a long-term commitment.</p>
+<p><a href="https://www.reddit.com/r/EmuDev/comments/4ukjaf/virtual_memory_in_ps1_bios/" target="_blank" rel="noopener">https://www.reddit.com/r/EmuDev/comments/4ukjaf/virtual_memory_in_ps1_bios/</a></p>
+<p>Hi nazboul, here are some answers as I went through this last year. First of all, virtual memory is not used in the PSX (even though the processor design it was based on allowed for it). That means you won’t have to worry about implementing all COP0 instructions (especially the ones related to TLB). That said, you still need to emulate the instruction cache, and what you are seeing is the BIOS filling it manually there. The cache control register (0xFFFE0130) contains important bits such as IsC (isolate cache), which does exactly this: it isolates cache from main memory so those writes won’t end up in main memory but in the instruction cache itself. The BIOS will then execute the content written afterwards - it is actual code. Hope this helps, and good luck to you!</p>
+<p><a href="https://www.reddit.com/r/EmuDev/comments/adslee/where_to_start_learning/" target="_blank" rel="noopener">https://www.reddit.com/r/EmuDev/comments/adslee/where_to_start_learning/</a></p>
+<h3 id="Github-Resources"><a href="#Github-Resources" class="headerlink" title="Github Resources"></a>Github Resources</h3><p><a href="https://github.com/sronsse/emux/blob/psx/cpu/r3051.c" target="_blank" rel="noopener">https://github.com/sronsse/emux/blob/psx/cpu/r3051.c</a></p>
+<p><a href="https://seubz.blogspot.com/2016/08/round-1-fight.html" target="_blank" rel="noopener">https://seubz.blogspot.com/2016/08/round-1-fight.html</a></p>
+<p><a href="https://seubz.blogspot.com/" target="_blank" rel="noopener">https://seubz.blogspot.com/</a></p>
+<p><a href="https://seubz.blogspot.com/2015/12/psx-stuff.html" target="_blank" rel="noopener">https://seubz.blogspot.com/2015/12/psx-stuff.html</a></p>
+<p>Once I manage to get some basic CD-ROM emulation, I should be able to reach the BIOS code path responsible for rendering the PS logo - this will also require the GTE to be working somewhat correctly (the geometry transformation engine is a co-processor responsible for 3D transformations, separate from the GPU which only handles 2D rendering). Let’s hope for the best!</p>
+<p>I quickly tested faking some more CD-ROM commands and make the BIOS believe that a licensed game was inserted - this should normally lead to the well-known PlayStation logo. The screen does show up, but without the 3D rendered logo due to the lack of GTE support at this moment. Hopefully, that should be my next update!</p>
+<h3 id="Tutorials"><a href="#Tutorials" class="headerlink" title="Tutorials"></a>Tutorials</h3><ul>
+<li><a href="https://github.com/pyk/cmake-tutorial" target="_blank" rel="noopener">https://github.com/pyk/cmake-tutorial</a></li>
+<li><a href="https://github.com/dkoluris/pseudo" target="_blank" rel="noopener">https://github.com/dkoluris/pseudo</a></li>
+<li><a href="https://github.com/morriswmz/SimpleMIPS.js" target="_blank" rel="noopener">https://github.com/morriswmz/SimpleMIPS.js</a></li>
+<li><a href="https://github.com/nothings/single_file_libs" target="_blank" rel="noopener">https://github.com/nothings/single_file_libs</a></li>
+<li><a href="https://github.com/lieff/minimp3" target="_blank" rel="noopener">https://github.com/lieff/minimp3</a></li>
+<li><a href="https://github.com/EtchedPixels/IDE" target="_blank" rel="noopener">https://github.com/EtchedPixels/IDE</a></li>
+<li><a href="https://github.com/JointEntropy/modern_langs/tree/master/pscx_emulator" target="_blank" rel="noopener">https://github.com/JointEntropy/modern_langs/tree/master/pscx_emulator</a></li>
+<li><a href="https://github.com/hxzwd/ps-emul-2" target="_blank" rel="noopener">https://github.com/hxzwd/ps-emul-2</a></li>
+<li><a href="https://github.com/ogamespec/psxdev" target="_blank" rel="noopener">https://github.com/ogamespec/psxdev</a></li>
+<li><a href="http://www.psxdev.net/" target="_blank" rel="noopener">http://www.psxdev.net/</a></li>
+<li><a href="https://en.wikipedia.org/wiki/PSXLinux" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/PSXLinux</a></li>
+<li><a href="https://github.com/Quaker762/psxact" target="_blank" rel="noopener">https://github.com/Quaker762/psxact</a> (very good)</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://twopothead.github.io/2019/01/26/implement-a-PS1-emulator-01/" data-id="cjrdngf4d0001mxd2wtlpkox7" class="article-share-link">Share</a>
+      <a data-url="https://twopothead.github.io/2019/01/26/implement-a-PS1-emulator-01/" data-id="cjrllq5i6000b2nd2ai4ee6kc" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MIPS/">MIPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PlayStation/">PlayStation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emulator/">emulator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/r3000/">r3000</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/01/27/OJ-Input-and-Output/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          OJ: Input and Output
+        
+      </div>
+    </a>
   
   
     <a href="/2019/01/23/Explore-Sony-Playstation/" id="article-nav-older" class="article-nav-link-wrap">
@@ -138,7 +236,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ECNU-OJ/" style="font-size: 10px;">ECNU-OJ</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/MIPS/" style="font-size: 10px;">MIPS</a> <a href="/tags/PlayStation/" style="font-size: 10px;">PlayStation</a> <a href="/tags/emulator/" style="font-size: 10px;">emulator</a> <a href="/tags/r3000/" style="font-size: 10px;">r3000</a> <a href="/tags/vjudge/" style="font-size: 10px;">vjudge</a>
+      <a href="/tags/ECNU-OJ/" style="font-size: 10px;">ECNU-OJ</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/MIPS/" style="font-size: 20px;">MIPS</a> <a href="/tags/PlayStation/" style="font-size: 20px;">PlayStation</a> <a href="/tags/emulator/" style="font-size: 20px;">emulator</a> <a href="/tags/r3000/" style="font-size: 20px;">r3000</a> <a href="/tags/vjudge/" style="font-size: 10px;">vjudge</a>
     </div>
   </div>
 
@@ -160,23 +258,23 @@
       <ul>
         
           <li>
-            <a href="/2019/01/26/implement-a-PS1-emulator-01/">implement a PS1 emulator 01</a>
+            <a href="/2019/01/31/implement-a-PS1-emulator-02/">implement-a-PS1-emulator-02</a>
           </li>
         
           <li>
-            <a href="/2019/01/23/Explore-Sony-Playstation/">Explore Sony Playstation!</a>
+            <a href="/2019/01/30/Make-an-emulator/">Make an emulator</a>
           </li>
         
           <li>
-            <a href="/2019/01/22/try-ECNU-OJ/">try ECNU-OJ</a>
+            <a href="/2019/01/30/learn-opengl-01/">learn opengl 01</a>
           </li>
         
           <li>
-            <a href="/2019/01/21/Oh-I-am-fucking-cumming/">Oh,I am fucking cumming</a>
+            <a href="/2019/01/29/CMU-MIPS/">CMU MIPS</a>
           </li>
         
           <li>
-            <a href="/2019/01/21/hello-world/">Hello World</a>
+            <a href="/2019/01/27/OJ-Input-and-Output/">OJ: Input and Output</a>
           </li>
         
       </ul>
